@@ -1,0 +1,37 @@
+{
+    "name": "TODO",
+    "version": "0.0.1",
+    "description": "TODO",
+    "homepage": "TODO",
+    "bugs": "TODO",
+    "license": "MIT",
+    "author": "TODO (TODO)",
+    "main": "./src",
+    "bin": {
+        "TODO": "./src/cli.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "TODO"
+    },
+    "dependencies": {
+        "commander": "2.6.x",
+        "check-types": "2.1.x",
+        "get-off-my-log": "0.1.x"
+    },
+    "optionalDependencies": {
+        "rconsole": "0.2.x"
+    },
+    "devDependencies": {
+        "jshint": "2.5.x",
+        "mocha": "2.1.x",
+        "chai": "1.10.x",
+        "mockery": "1.4.x",
+        "spooks": "1.0.x"
+    },
+    "scripts": {
+        "lint": "jshint src",
+        "test": "mocha --ui tdd --reporter spec --recursive --colors test"
+    }
+}
+
