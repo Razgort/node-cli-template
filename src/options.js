@@ -9,20 +9,20 @@ path = require('path');
 fs = require('fs');
 
 defaults = {
-    todo: 'TODO: add your default option values here',
+    TODO: 'TODO: add your default option values here',
     log: { info: nop, warn: nop, error: nop }
 };
 
 function nop () {}
 
 // TODO: name your default config file here
-defaultConfig = '.todorc';
+defaultConfig = '.TODOrc';
 
 module.exports = {
     cli: [
         {
-            format: '-t, --todo <todo>',
-            description: 'TODO: add your command-line options here, default is `' + defaults.todo + '`'
+            format: '-t, --TODO <TODO>',
+            description: 'TODO: add your command-line options here, default is `' + defaults.TODO + '`'
         },
         {
             format: '-s, --silent',

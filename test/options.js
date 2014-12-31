@@ -165,7 +165,7 @@ suite('options:', function () {
                 test('path.resolve was called correctly', function () {
                     assert.strictEqual(log.these.resolve[0], require('path'));
                     assert.lengthOf(log.args.resolve[0], 1);
-                    assert.strictEqual(log.args.resolve[0][0], '.todorc');
+                    assert.strictEqual(log.args.resolve[0][0], '.TODOrc');
                 });
 
                 test('fs.existsSync was called once', function () {
@@ -339,7 +339,7 @@ suite('options:', function () {
                 });
 
                 test('path.resolve was called correctly', function () {
-                    assert.strictEqual(log.args.resolve[0][0], '.todorc');
+                    assert.strictEqual(log.args.resolve[0][0], '.TODOrc');
                 });
 
                 test('fs.existsSync was called once', function () {
