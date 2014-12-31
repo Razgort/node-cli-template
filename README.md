@@ -66,13 +66,11 @@ Assuming that you already have node and NPM set up,
 you just need to run `npm install` to
 install all of the dependencies as listed in `package.json`.
 
-The unit tests are in `test/check-types.js`.
-You can run them with the command `npm test`.
-To run the tests in a web browser,
-open `test/check-types.html`.
-
 You can lint the code
 with the command `npm run lint`.
+
+You can run the unit tests
+with the command `npm test`.
 
 ## What license is it released under?
 
