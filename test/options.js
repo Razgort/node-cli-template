@@ -83,7 +83,7 @@ suite('options:', function () {
         test('cli options seem correct', function () {
             options.cli.forEach(function (option) {
                 assert.isString(option.format);
-                assert.match(option.format, /^-[a-z], --[a-z]+( <[a-zA-Z]+>)?$/);
+                assert.match(option.format, /^-[a-z], --[a-zA-Z]+( <[a-zA-Z]+>)?$/);
                 assert.isString(option.description);
                 assert.match(option.description, /^[a-zA-Z0-9 ,`:\.\/-]+$/);
 
@@ -150,8 +150,7 @@ suite('options:', function () {
                 var normalised;
 
                 setup(function () {
-                    normalised = {};
-                    options.normalise(normalised);
+                    normalised = options.normalise({});
                 });
 
                 teardown(function () {
@@ -219,15 +218,15 @@ suite('options:', function () {
                 });
 
                 test('normalised object has correct number of keys', function () {
-                    assert.lengthOf(Object.keys(normalised), 5);
+                    assert.lengthOf(Object.keys(normalised), 4);
                 });
 
-                test('normalised.foo is correct', function () {
-                    assert.strictEqual(normalised.foo, 'bar');
+                test('normalised.foo is undefined', function () {
+                    assert.isUndefined(normalised.foo);
                 });
 
-                test('normalised.baz is correct', function () {
-                    assert.strictEqual(normalised.baz, 'qux');
+                test('normalised.baz is undefined', function () {
+                    assert.isUndefined(normalised.baz);
                 });
 
                 test('normalised.silent is correct', function () {
@@ -256,7 +255,7 @@ suite('options:', function () {
 
                 suite('normalise:', function () {
                     setup(function () {
-                        options.normalise(normalised);
+                        normalised = options.normalise(normalised);
                     });
 
                     test('path.resolve was not called', function () {
@@ -284,15 +283,15 @@ suite('options:', function () {
                     });
 
                     test('normalised object has correct number of keys', function () {
-                        assert.lengthOf(Object.keys(normalised), 5);
+                        assert.lengthOf(Object.keys(normalised), 4);
                     });
 
-                    test('normalised.foo is correct', function () {
-                        assert.strictEqual(normalised.foo, 'bar');
+                    test('normalised.foo is undefined', function () {
+                        assert.isUndefined(normalised.foo);
                     });
 
-                    test('normalised.baz is correct', function () {
-                        assert.strictEqual(normalised.baz, 'qux');
+                    test('normalised.baz is undefined', function () {
+                        assert.isUndefined(normalised.baz);
                     });
 
                     test('normalised.silent is correct', function () {
@@ -321,13 +320,12 @@ suite('options:', function () {
                 var normalised;
 
                 setup(function () {
-                    normalised = {
+                    normalised = options.normalise({
                         silent: true,
                         log: nop,
                         foo: '',
                         something: 'else'
-                    };
-                    options.normalise(normalised);
+                    });
                 });
 
                 teardown(function () {
@@ -363,15 +361,15 @@ suite('options:', function () {
                 });
 
                 test('normalised object has correct number of keys', function () {
-                    assert.lengthOf(Object.keys(normalised), 7);
+                    assert.lengthOf(Object.keys(normalised), 4);
                 });
 
-                test('normalised.foo is correct', function () {
-                    assert.strictEqual(normalised.foo, '');
+                test('normalised.foo is undefined', function () {
+                    assert.isUndefined(normalised.foo);
                 });
 
-                test('normalised.baz is correct', function () {
-                    assert.strictEqual(normalised.baz, 'qux');
+                test('normalised.baz is undefined', function () {
+                    assert.isUndefined(normalised.baz);
                 });
 
                 test('normalised.silent is correct', function () {
@@ -390,8 +388,8 @@ suite('options:', function () {
                     assert.isFunction(normalised.log.error);
                 });
 
-                test('normalised.something is correct', function () {
-                    assert.strictEqual(normalised.something, 'else');
+                test('normalised.something is undefined', function () {
+                    assert.isUndefined(normalised.something);
                 });
 
                 test('normalised.normalised is true', function () {
@@ -403,8 +401,7 @@ suite('options:', function () {
                 var normalised;
 
                 setup(function () {
-                    normalised = { config: 'mahumba' };
-                    options.normalise(normalised);
+                    normalised = options.normalise({ config: 'mahumba' });
                 });
 
                 teardown(function () {
@@ -440,11 +437,11 @@ suite('options:', function () {
                 });
 
                 test('normalised object has correct number of keys', function () {
-                    assert.lengthOf(Object.keys(normalised), 6);
+                    assert.lengthOf(Object.keys(normalised), 4);
                 });
 
-                test('normalised.config is correct', function () {
-                    assert.strictEqual(normalised.config, 'mahumba');
+                test('normalised.config is undefined', function () {
+                    assert.isUndefined(normalised.config);
                 });
 
                 test('normalised.normalised is true', function () {
@@ -465,8 +462,7 @@ suite('options:', function () {
                 var normalised;
 
                 setup(function () {
-                    normalised = {};
-                    options.normalise(normalised);
+                    normalised = options.normalise({});
                 });
 
                 teardown(function () {
@@ -502,7 +498,7 @@ suite('options:', function () {
                 });
 
                 test('normalised object has correct number of keys', function () {
-                    assert.lengthOf(Object.keys(normalised), 3);
+                    assert.lengthOf(Object.keys(normalised), 4);
                 });
 
                 test('normalised.silent is correct', function () {

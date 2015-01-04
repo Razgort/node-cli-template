@@ -2,9 +2,9 @@
 
 'use strict';
 
-var options;
+var normalise;
 
-options = require('./options');
+normalise = require('./options').normalise;
 
 module.exports = {
     // TODO: export your public functions here
@@ -24,7 +24,7 @@ module.exports = {
  * @option config     {string}  Load options from JSON config file.
  */
 function TODO (options) {
-    options.normalise(options);
+    options = normalise(options);
 
     // TODO: implement your function here
 }

@@ -10,6 +10,7 @@ fs = require('fs');
 
 defaults = {
     TODO: 'TODO: add your default option values here',
+    silent: undefined,
     log: { info: nop, warn: nop, error: nop }
 };
 
@@ -41,15 +42,27 @@ module.exports = {
 };
 
 function normalise (options) {
-    if (!options.normalised) {
-        populateObject(options, readJSON(options.config, defaultConfig));
+    var normalised;
 
-        options.log = getLog(options);
-
-        populateObject(options, defaults);
-
-        options.normalised = true;
+    if (options.normalised) {
+        return options;
     }
+
+    normalised = {
+        normalised: true
+    };
+
+    populateObject(options, readJSON(options.config, defaultConfig));
+
+    Object.keys(defaults).forEach(function (key) {
+        normalised[key] = options[key];
+    });
+
+    normalised.log = getLog(normalised);
+
+    populateObject(normalised, defaults);
+
+    return normalised;
 }
 
 function readJSON (jsonPath, defaultFileName) {

@@ -15,11 +15,11 @@
         "url": "git@github.com:TODO/TODO.git"
     },
     "keywords": [
-        "TODO
+        "TODO"
     ],
     "dependencies": {
         "commander": "2.6.x",
-        "check-types": "2.1.x",
+        "check-types": "2.2.x",
         "get-off-my-log": "0.1.x"
     },
     "optionalDependencies": {
