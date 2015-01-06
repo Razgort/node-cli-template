@@ -82,6 +82,6 @@ with the command `npm test`.
 [jshint]: https://github.com/jshint/node-jshint
 [mocha]: http://visionmedia.github.com/mocha
 [chai]: http://chaijs.com/
-[uglifyjs]: https://github.com/mishoo/UglifyJS
+[spooks]: https://github.com/philbooth/spooks.js
 [license]: COPYING
 
