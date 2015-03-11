@@ -18,19 +18,19 @@
         "TODO"
     ],
     "dependencies": {
-        "commander": "2.6.x",
-        "check-types": "2.2.x",
+        "commander": "2.7.x",
+        "check-types": "3.1.x",
         "get-off-my-log": "0.1.x"
     },
     "optionalDependencies": {
-        "rconsole": "0.2.x"
+        "ain2": "1.5.x"
     },
     "devDependencies": {
-        "jshint": "2.5.x",
-        "mocha": "2.1.x",
-        "chai": "1.10.x",
+        "jshint": "2.6.x",
+        "mocha": "2.2.x",
+        "chai": "2.1.x",
         "mockery": "1.4.x",
-        "spooks": "1.0.x"
+        "spooks": "2.0.x"
     },
     "scripts": {
         "lint": "jshint src",

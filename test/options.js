@@ -16,7 +16,13 @@ suite('options:', function () {
 
     setup(function () {
         log = {};
-        results = {};
+        results = {
+            resolve: [],
+            existsSync: [],
+            statSync: [],
+            isFile: [],
+            readFileSync: []
+        };
 
         mockery.enable({ useCleanCache: true });
         mockery.registerMock('path', spooks.obj({
@@ -35,7 +41,7 @@ suite('options:', function () {
             results: results
         }));
 
-        results.statSync = {
+        results.statSync[0] = {
             isFile: spooks.fn({ name: 'isFile', log: log, results: results })
         };
         results.initialise = spooks.obj({
@@ -99,9 +105,9 @@ suite('options:', function () {
 
         suite('with JSON file config:', function () {
             setup(function () {
-                results.resolve = 'wibble';
-                results.existsSync = results.isFile = true;
-                results.readFileSync = '{"foo":"bar","baz":"qux"}';
+                results.resolve[0] = 'wibble';
+                results.existsSync[0] = results.isFile[0] = true;
+                results.readFileSync[0] = '{"foo":"bar","baz":"qux"}';
             });
 
             test('normalise throws without options', function () {
@@ -192,7 +198,7 @@ suite('options:', function () {
                 });
 
                 test('stat.isFile was called correctly', function () {
-                    assert.strictEqual(log.these.isFile[0], results.statSync);
+                    assert.strictEqual(log.these.isFile[0], results.statSync[0]);
                     assert.lengthOf(log.args.isFile[0], 0);
                 });
 
@@ -452,10 +458,10 @@ suite('options:', function () {
 
         suite('with non-existent config:', function () {
             setup(function () {
-                results.resolve = 'the quick brown fox jumps over the lazy dog';
-                results.existsSync = false;
-                results.isFile = true;
-                results.readFileSync = '{"a":"b"}';
+                results.resolve[0] = 'the quick brown fox jumps over the lazy dog';
+                results.existsSync[0] = false;
+                results.isFile[0] = true;
+                results.readFileSync[0] = '{"a":"b"}';
             });
 
             suite('normalise with empty options:', function () {
@@ -527,9 +533,9 @@ suite('options:', function () {
             var normalised;
 
             setup(function () {
-                results.resolve = 'wibble';
-                results.existsSync = results.isFile = true;
-                results.readFileSync = 'foo';
+                results.resolve[0] = 'wibble';
+                results.existsSync[0] = results.isFile[0] = true;
+                results.readFileSync[0] = 'foo';
                 normalised = {};
             });
 
