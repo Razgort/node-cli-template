@@ -98,8 +98,7 @@ function getLog (options) {
     }
 
     if (options.syslog) {
-        initialiseSyslog(options.syslog);
-        return console;
+        return getSyslog(options.syslog);
     }
 
     if (options.log) {
@@ -114,18 +113,11 @@ function getLog (options) {
     return require('get-off-my-log').initialise('TODO: set your log origin here', console.log);
 }
 
-function initialiseSyslog (facility) {
+function getSyslog (facility) {
     try {
-        require('rconsole');
-
-        console.set({
-            facility: facility,
-            title: 'TODO: set your log title',
-            stdout: true,
-            stderr: true,
-            showLine: false,
-            showFile: false,
-            showTime: true
+        return new (require('ain2'))({
+            tag: 'TODO: set your syslog tag',
+            facility: facility
         });
     } catch (e) {
         console.log('Failed to initialise syslog, exiting.');
